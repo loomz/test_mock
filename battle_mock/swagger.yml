@@ -1,0 +1,64 @@
+swagger: '2.0'
+info: {title: Battle-master, version: 1.0.0}
+produces: [application/json]
+consumes: [application/json]
+definitions:
+  KillUser:
+    properties:
+      enemyid: {type: string}
+      equipmentid: {type: string}
+    required: [enemyid, equipmentid]
+    type: object
+  User:
+    properties:
+      username: { type: string }
+      password: { type: string }
+    required: [ username ]
+    type: object
+  RetMsg:
+    properties:
+      code: {type: number}
+      msg: {type: string}
+      data: {type: object}
+    required: [code]
+    type: object
+paths:
+  /index:
+    get:
+      produces: [text/plain]
+      responses:
+        '200':
+          description: '主页'
+
+  /login:
+    post:
+      parameters:
+        - in: body
+          name: user
+          required: true
+          schema: { $ref: '#/definitions/User' }
+      responses:
+        '200':
+          description: '登录'
+          schema: { $ref: '#/definitions/RetMsg' }
+
+  /selectEq/{equipmentid}:
+    get:
+      parameters:
+        - {in: path, name: equipmentid, required: true, type: string}
+      responses:
+        '200':
+          description: '选择武器'
+          schema: { $ref: '#/definitions/RetMsg' }
+
+  /kill:
+    post:
+      parameters:
+        - in: body
+          name: KillUser
+          required: true
+          schema: { $ref: '#/definitions/KillUser' }
+      responses:
+        '200':
+          description: '战斗'
+          schema: { $ref: '#/definitions/RetMsg' }
