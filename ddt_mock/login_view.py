@@ -2,6 +2,7 @@
 # !coding:utf-8
 from flask import Flask, jsonify
 from flask_restful import Api, Resource, reqparse
+from flasgger import Swagger, swag_from
 
 app = Flask(__name__)
 api = Api(app)
@@ -11,6 +12,7 @@ class LoginView(Resource):
     def get(self):
         return {'status': 0, 'msg': 'ok', 'data': 'this is a login page'}
 
+    @swag_from('login_post.yml')
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('username', type=str, required=True, help='用户名不能为空')
