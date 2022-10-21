@@ -19,6 +19,7 @@ session_opts = {
    'session.auto':True               #自动保存session
     }
 
+
 @app.get('/index')
 def index():
     return {'code': 0, 'msg': 'please post /login and input your username(your english name) and password(your english name)'}
@@ -39,6 +40,7 @@ def login():
     else:
         return {'code': 999, 'msg': 'Error 9901: Username or PassWord!!'}
 
+
 @app.get('/selectEq/<equipmentid>')
 def selectEq(equipmentid):
     print('equipmentid=' + equipmentid)
@@ -55,6 +57,7 @@ def selectEq(equipmentid):
                     'data': {'equipmentid': equipmentid}}
     else:
         return {'code': 999, 'msg': 'Error 9902: Your kill yourself!!'}
+
 
 @app.post('/kill')
 def kill():
@@ -85,6 +88,7 @@ def kill():
             return {'code': 900, 'msg': 'Error 9902: Your kill yourself!!'}
     else:
         return {'code': 901, 'msg': 'Error 9903: You Broken The Rule!And Kill yourself'}
+
 
 app = SessionMiddleware(app, session_opts)
 if __name__ == '__main__':
