@@ -10,7 +10,7 @@ server.config['JSON_AS_ASCII'] = False
 @swag_from('demo.yml')
 def demo_request():
     json_data = request.json
-    result = {"code": "200", "msg": "SUCCES", "data": {"name": "xxxxxx", "age": 25, "job": "python"}}
+    result = {"code": "200", "msg": "SUCCESS", "data": {"name": "xxxxxx", "age": 25, "job": "python"}}
     return jsonify(result)
 
 
