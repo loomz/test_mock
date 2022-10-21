@@ -1,27 +1,28 @@
 tags:
-  - falsk集成swagger示例
+  - 登录接口
 description:
-    示例flasgger进行在线文档生成，添加用户信息，请求参数覆盖了常用的字符串、对象、数组、数字
+    登录接口－描述
 parameters:
   - name: body
     in: body
     required: true
     schema:
-      id: 接口参数示例
+      id: 用户信息
       properties:
-        userName:
+        username:
           type: string
-          description: 用户自己的姓名
-        userInfo:
-            properties:
-              hobby:
-                type: array
-                items:
-                  type: string
-                description: 用户的爱好
-              age:
-                type: integer
-                description: 用户年龄
+          description: 用户名
+          required: true
+        password:
+          type: string
+          description: 密码
+          required: true
+        age:
+          type: integer
+          description: 年龄
+        sex:
+          type: string
+          enum: [ '男', '女']
 responses:
   200:
      description: 添加用户成功
