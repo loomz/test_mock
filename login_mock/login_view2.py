@@ -17,7 +17,6 @@ def get():
     return {'status': 0, 'msg': 'ok', 'data': 'this is a login page'}
 
 
-
 # 构造一个接受post请求的响应
 @server.route('/login', methods=['POST'])
 @swag_from('login_post.yml')
