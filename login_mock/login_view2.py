@@ -23,6 +23,7 @@ def get():
 def post():
     # request.json 只能够接受方法为POST、Body为raw，header 内容为 application/json类型的数据
     json_data = request.json
+    print("json_data=%s" % json_data)
     parser = reqparse.RequestParser()
     parser.add_argument('username', type=str, required=True, help='用户名不能为空')
     parser.add_argument('password', type=str, required=True, help='账户密码不能为空')
